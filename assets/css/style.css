@@ -1,0 +1,59 @@
+
+/* FONT IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+
+/* RESET DEFAULT */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    color: #353535;
+    font-family: 'Inter', sans-serif;
+}
+:root {
+    --color-primary: #4D41C0;
+  }
+  
+
+/* HEADER AREA */
+header{
+    height: 80px;
+    background-color: var(--color-primary);
+}
+.headerContainer{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+header .logoArea{
+    color: #FFF;
+    font-size: 1.4rem;
+}
+
+#btn{
+    background-color: var(--color-primary);
+    padding: 10px;
+    color: #FFF;
+}
+#btn2{
+    display: none;
+    background-color: var(--color-primary);
+    padding: 10px;
+    color: #FFF;
+}
+
+#cabecalho{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+}
+#load{
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+#cnpj{
+    
+}
