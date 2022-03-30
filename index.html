@@ -18,8 +18,9 @@
             <div class="logoArea">Extrator Fiscal - XML</div>
         </div>
     </header>
+<main>
     <div id="impostos">
-        <div class="cabecalho">
+        <div class="cabecalho" id="headTab">
             <div id="load"></div>
             <div id="fantasia"></div>
             <div id="cnpj"></div>
@@ -48,15 +49,20 @@
                     </tr>
                 </thead>
                 <tbody id="tabela"></tbody>
-                
             </table>
         </div>
         <div id="teste"></div>
     </div>
-    <div id="buttons">
-        <button id="btn" onclick="mostrar()">Processar</button>
-        <button id="btn2" onclick="voltar()">Nova consulta</button>
+    <div class="areaButtons">
+        <div class="areaInput" id="inputArea">
+            <input type="file" id="file" accept=".doc,.xml">
+        </div>
+        <div id="buttons">
+            <button id="btn" onclick="mostrar()">Processar</button>
+            <button id="btn2" onclick="voltar()">Nova consulta</button>
+        </div>
     </div>
+</main>
    
     <script src="script.js"></script>
 </body>
