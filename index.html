@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,14 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <header id="header">
         <div class="headerContainer container">
             <div class="logoArea">Extrator Fiscal - XML</div>
         </div>
     </header>
-    <div id="impostos" class="container">
+    <div id="impostos">
         <div class="cabecalho">
             <div id="load"></div>
             <div id="fantasia"></div>
@@ -25,13 +27,35 @@
             <div id="nnf"></div>
         </div>
         <div id="items">
-            <tbody>
+            <table class="table" id="tableItems">
+                <thead class="thead-light">
+                    <tr>
+                        <!-- <th scope="col">Código</th>
+                        <th scope="col">cEAN</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">NCM</th>
+                        <th scope="col">CEST</th>
+                        <th scope="col">CFOP</th>
+                        <th scope="col">CST/CSOSN</th>
+                        <th scope="col">% ICMS</th>
+                        <th scope="col">% RED.ICMS</th>
+                        <th scope="col">% RED.ICMSST</th>
+                        <th scope="col">PIS Venda</th>
+                        <th scope="col">COFINS Venda</th>
+                        <th scope="col">PIS Compra</th>
+                        <th scope="col">COFINS Compra</th>
+                        <th scope="col">% IPI</th> -->
+                    </tr>
+                </thead>
+                <tbody id="tabela"></tbody>
                 
-            </tbody>
+            </table>
         </div>
+        <div id="teste"></div>
         <button id="btn" onclick="mostrar()">Processar</button>
         <button id="btn2">Limpar</button>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
