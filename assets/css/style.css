@@ -26,8 +26,17 @@ header{
 }
 .headerContainer{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
+}
+.menuMobile img{
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.menuMobile img:hover{
+    background-color: #746cbe60;
+    padding: 5px;
 }
 header .logoArea{
     color: #FFF;
@@ -87,4 +96,51 @@ tr th{
     background-color: #f5f5f5;
     position: fixed;
     top: 50%;
+}
+
+#linksUteis{
+    width: 0px;
+    height: calc(100vh - 80px);
+    z-index: 999;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    background-color: var(--color-primary);
+    transition: all 0.1s linear;
+    overflow-x: hidden;
+    padding: 40px 0;
+}
+.linksTitle{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f5f5f5;
+}
+#links a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #f5f5f5;
+    border-bottom: 1px solid #9992db38;
+    padding: 20px;
+    transition: all 0.3s linear;
+}
+#links a:hover{
+    background-color: #f5f5ff10;
+}
+#links{
+    padding-left: 0 !important;
+}
+#links a i{
+    font-size: 1.8rem;
+    color: #f5f5f5;
+    margin-right: 20px;
+}
+#links a li{
+    font-size: 1.1rem;
+    list-style: none;
+    color: #f5f5f5;
 }

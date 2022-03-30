@@ -79,3 +79,15 @@ function voltar(){
             document.querySelector('.areaButtons').style.position = 'fixed';
         }
 }
+
+const c = (elem) => {
+    return document.getElementById(elem);
+}
+
+function abrirMenu(){
+    if(c('linksUteis').style.width == '350px'){
+        c('linksUteis').style.width = '0px';
+    }else{
+        c('linksUteis').style.width = '350px';
+    }
+}
