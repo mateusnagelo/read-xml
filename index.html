@@ -16,7 +16,7 @@
 <body>
     <header id="header">
         <div class="headerContainer container">
-            <div class="logoArea">Extrator Fiscal - XML</div>
+            <div class="logoArea"><i class="fa-brands fa-buffer"></i>Extrator Fiscal - XML</div>
             <div class="menuMobile">
                 <img src="assets/images/menu.png" alt="menu" onclick="abrirMenu()">
             </div>
@@ -43,29 +43,45 @@
     </div>
     <div class="areaButtons">
         <div class="areaInput" id="inputArea">
-            <input type="file" id="file" accept=".doc,.xml">
+            <label for="xml" id="label">Selecione seu arquivo .xml</label>
+            <input type="file" id="file" name="xml" accept=".doc,.xml">
+            <small id="small">Apenas para notas de modelo 55*</small>
         </div>
         <div id="buttons">
             <button id="btn" onclick="mostrar()">Processar</button>
             <button id="btn2" onclick="voltar()">Nova consulta</button>
         </div>
     </div>
+    <div onclick="subirTela()" class="btnToTop">
+        <img src="assets/images/seta-para-recolher.png" alt="">
+    </div>
 
+        
     <aside id="aside">
         <nav id="linksUteis">
             <div class="linksTitle">
                 Links Úteis
             </div>
             <ul id="links">
+                <a href="https://tributaliza.com.br/dashboard/#/auth/login" target="_blank"><i class="tributaliza"><img src="assets/images/tributaliza.png" alt=""></i><li>Tributaliza | Dashboard</li></a>
                 <a href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" target="_blank"><i class="fa-solid fa-download"></i><li>Download XML | Portal da NFe</li></a>
                 <a href="https://www.fsist.com.br/" target="_blank"><i class="fa-solid fa-cloud-arrow-down"></i><li>Visualizar DANFE NFe | FSist</li></a>
                 <a href="https://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx" target="_blank"><i class="fa-solid fa-archway"></i><li>Consultar NFCe | Sefaz-BA</li></a>
-                <a href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" target="_blank"><i class="fa-solid fa-download"></i><li>Download XML</li></a>
+                <a href="https://www.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp" target="_blank"><i class="fa-solid fa-archway"></i><li>Consultar empresa | Sefaz-BA</li></a>
+                <a href="https://nfe.sefaz.ba.gov.br/servicos/NFENC/SSL/ASLibrary/Login?ReturnUrl=%2fservicos%2fnfenc%2fModulos%2fAutenticado%2fRestrito%2fNFENC_consulta_destinatario.aspx" target="_blank"><i class="fa-solid fa-archway"></i><li>NFe emitida para seu CNPJ | Sefaz-BA</li></a>
+                <a href="https://servicos.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank"><i class="fa-solid fa-database"></i><li>Consultar CNPJ | Receita federal</li></a>
+                <a href="https://cosmos.bluesoft.com.br/ncms" target="_blank"><i class="fa-brands fa-accusoft"></i><li>Consultar NCM | Cosmos</li></a>
+                <a href="https://cosmos.bluesoft.com.br/tabelas/tabela-municipios-ibge" target="_blank"><i class="fa-solid fa-city"></i><li>Código municípios | Cosmos</li></a>
+                <a href="http://www.sintegra.gov.br/" target="_blank"><i class="fa-solid fa-file-shield"></i><li>Achar IE | SINTEGRA.GOV</li></a>
             </ul>
         </nav>
     </aside>
 </main>
-   
+<footer id="footer">
+    <div id="footerArea">
+        © 2022 Sacolão Bom Preço - Todos os direitos reservados.
+    </div>
+</footer>
     <script src="script.js"></script>
 </body>
 

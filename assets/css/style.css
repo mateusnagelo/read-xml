@@ -10,6 +10,7 @@
     box-sizing: border-box;
     color: #353535;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 :root {
     --color-primary: #4D41C0;
@@ -32,15 +33,24 @@ header{
 }
 .menuMobile img{
     cursor: pointer;
-    transition: all 0.3s linear;
+    transition: all 0.1s linear;
+    width: 40px;
 }
 .menuMobile img:hover{
-    background-color: #746cbe60;
-    padding: 5px;
+    
+    padding: 3px;
 }
 header .logoArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     color: #FFF;
     font-size: 1.4rem;
+}
+header .logoArea i{
+    font-size: 1.7rem;
+    color: #FFF;
 }
 main{
     display: flex;
@@ -48,18 +58,39 @@ main{
     justify-content: center;
     align-items: center;
 }
+#inputArea{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+#inputArea small{
+    color: #ccc;
+    font-weight: bold;
+    margin-top: 10px;
+}
+#inputArea label{
+    color: #999;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 #btn{
     background-color: var(--color-primary);
     padding: 10px;
     color: #FFF;
+    transition: all 0.2s linear;
 }
 #btn2{
     display: inline-block;
     background-color: var(--color-primary);
     padding: 10px;
     color: #FFF;
+    transition: all 0.2s linear;
 }
-
+#btn:hover,
+#btn2:hover{
+    opacity: .8;
+}
 #load{
     font-weight: 700;
     font-size: 1.5rem;
@@ -101,7 +132,7 @@ tr th{
 #linksUteis{
     width: 0px;
     height: calc(100vh - 80px);
-    z-index: 999;
+    z-index: 9999;
     position: absolute;
     right: 0;
     top: 80px;
@@ -135,12 +166,55 @@ tr th{
     padding-left: 0 !important;
 }
 #links a i{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #f5f5f5;
-    margin-right: 20px;
 }
+#links a i img{
+    width: 27px;
+}
+
 #links a li{
-    font-size: 1.1rem;
+    font-size: .9rem;
     list-style: none;
     color: #f5f5f5;
+}
+
+
+.btnToTop{
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    width: 50px;
+    padding: 5px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 999;
+    right: 10px;
+    bottom: 30px;
+    transition: all 0.3s linear;
+    display: none;
+}
+.btnToTop:hover{
+    opacity: .8;
+}
+.btnToTop img{
+    width: 100%;
+}
+
+
+
+#footer{
+    height: 28px;
+    background-color: var(--color-primary);
+    display: block;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#footerArea{
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 12px;
 }
