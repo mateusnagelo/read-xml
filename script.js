@@ -15,6 +15,7 @@
         c('btn').style.display = 'none';
         c('label').style.display = 'none';
         c('small').style.display = 'none';
+        c('linksUteis').style.width = '0px';
 
         c('chave').innerHTML = 'Chave de acesso:'+ ' ' + xml.chNFe;
         c('cnpj').innerHTML = 'CNPJ:'+ ' ' +xml.cnpj;

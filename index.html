@@ -16,8 +16,12 @@
 <body>
     <header id="header">
         <div class="headerContainer container">
-            <div class="logoArea"><i class="fa-brands fa-buffer"></i>Extrator Fiscal - XML</div>
+            <div class="logoContainer">
+                <img src="assets/images/logo.png" alt="logo_icon">
+                <div class="logoArea">Extrator Fiscal - XML</div>
+            </div>
             <div class="menuMobile">
+                <button id="btn2" class="newConsult" onclick="voltar()">Nova consulta</button>
                 <img src="assets/images/menu.png" alt="menu" onclick="abrirMenu()">
             </div>
         </div>
@@ -72,15 +76,19 @@
             <ul id="links">
                 <a href="https://tributaliza.com.br/dashboard/#/auth/login" target="_blank"><i class="tributaliza"><img src="assets/images/tributaliza.png" alt=""></i><li>Tributaliza | Dashboard</li></a>
                 <a href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" target="_blank"><i class="fa-solid fa-download"></i><li>Download XML | Portal da NFe</li></a>
-                <a href="https://www.fsist.com.br/" target="_blank"><i class="fa-solid fa-cloud-arrow-down"></i><li>Visualizar DANFE NFe | FSist</li></a>
+                <a href="https://www.fsist.com.br/" target="_blank"><i class="fa-solid fa-cloud-arrow-down"></i><li>Visualizar DANFE da NFe | FSist</li></a>
                 <a href="https://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx" target="_blank"><i class="fa-solid fa-archway"></i><li>Consultar NFCe | Sefaz-BA</li></a>
                 <a href="https://www.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp" target="_blank"><i class="fa-solid fa-archway"></i><li>Consultar empresa | Sefaz-BA</li></a>
-                <a href="https://nfe.sefaz.ba.gov.br/servicos/NFENC/SSL/ASLibrary/Login?ReturnUrl=%2fservicos%2fnfenc%2fModulos%2fAutenticado%2fRestrito%2fNFENC_consulta_destinatario.aspx" target="_blank"><i class="fa-solid fa-archway"></i><li>NFe emitida para seu CNPJ | Sefaz-BA</li></a>
+                <a href="https://nfe.sefaz.ba.gov.br/servicos/NFENC/SSL/ASLibrary/Login?ReturnUrl=%2fservicos%2fnfenc%2fModulos%2fAutenticado%2fRestrito%2fNFENC_consulta_destinatario.aspx" target="_blank"><i class="fa-solid fa-archway"></i><li>Consultar NFe emitida para o seu CNPJ | Sefaz-BA</li></a>
                 <a href="https://servicos.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp" target="_blank"><i class="fa-solid fa-database"></i><li>Consultar CNPJ | Receita federal</li></a>
                 <a href="https://cosmos.bluesoft.com.br/ncms" target="_blank"><i class="fa-brands fa-accusoft"></i><li>Consultar NCM | Cosmos</li></a>
                 <a href="https://cosmos.bluesoft.com.br/tabelas/tabela-municipios-ibge" target="_blank"><i class="fa-solid fa-city"></i><li>Código municípios | Cosmos</li></a>
-                <a href="http://www.sintegra.gov.br/" target="_blank"><i class="fa-solid fa-file-shield"></i><li>Achar IE | SINTEGRA.GOV</li></a>
+                <a href="http://www.sintegra.gov.br/" target="_blank"><i class="fa-solid fa-file-shield"></i><li>Consultar IE pelo CNPJ | SINTEGRA.GOV</li></a>
             </ul>
+            <a href="login.html" id="exit">
+                <i class="fa-solid fa-person-running"></i>
+                <div class="sair">Sair</div>
+            </a>
         </nav>
     </aside>
 </main>
