@@ -118,6 +118,23 @@ tr th{
     display: none;
     font-weight: 700;
     padding: 20px;
+    background-color: red;
+}.cabecalhoContainer{
+    display: flex;
+}
+.cabecalhoItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    background-color: blue;
+}
+.cabecalhoItensValor{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    background-color: pink;
 }
 .areaButtons{
     display: flex;
