@@ -48,7 +48,8 @@ header .logoArea{
     color: #FFF;
     font-size: 1.4rem;
 }
-header .logoArea i{
+header .logoArea i,
+.logoContainer i{
     font-size: 1.7rem;
     color: #FFF;
 }
@@ -56,6 +57,7 @@ header .logoArea i{
     display: flex;
     justify-content:center;
     align-items: center;
+    gap: 10px;
 }
 .logoContainer img{
     width: 62px;
@@ -88,15 +90,16 @@ main{
     color: #FFF;
     transition: all 0.2s linear;
 }
-#btn2{
-    display: inline-block;
+#btn2, #btn3{
+    display: none;
     background-color: var(--color-primary);
     padding: 10px;
     color: #FFF;
     transition: all 0.2s linear;
 }
 #btn:hover,
-#btn2:hover{
+#btn2:hover,
+#btn3:hover{
     opacity: .8;
 }
 #load{

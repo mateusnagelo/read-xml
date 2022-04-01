@@ -16,6 +16,8 @@
         c('label').style.display = 'none';
         c('small').style.display = 'none';
         c('linksUteis').style.width = '0px';
+        c('btn2').style.display = 'inline-block';
+        c('btn3').style.display = 'inline-block';
 
         c('chave').innerHTML = 'Chave de acesso:'+ ' ' + xml.chNFe;
         c('cnpj').innerHTML = 'CNPJ:'+ ' ' +xml.cnpj;
@@ -104,6 +106,15 @@ function voltar(){
         if(document.getElementById('small').style.display == 'none'){
             document.getElementById('small').style.display = 'inline-block'
         }
+    document.getElementById('btn2').style.display;
+        if(document.getElementById('btn2').style.display == 'inline-block'){
+            document.getElementById('btn2').style.display = 'none'
+        }
+    document.getElementById('btn3').style.display;
+        if(document.getElementById('btn3').style.display == 'inline-block'){
+            document.getElementById('btn3').style.display = 'none'
+        }
+
 };
 
 
