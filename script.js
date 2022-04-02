@@ -29,7 +29,7 @@
         document.getElementById('footer').style.position = 'relative';
 
         const xmlItems = xml['xmlItem'];
-        let html ='<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">Preço Un</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST/CSOSN</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
+        let html ='<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">Preço Un</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
 
         xmlItems.map(function(item, index){
 
@@ -46,15 +46,16 @@
 
             let bcIcms = item.pIcms;
             let bcIcmsInt = parseInt(bcIcms);
-    
+            
+            let codigo = item.cProd.replace(/^(0+)(\d)/g,"$2");
 
             let preco = item.preco;
             let precoInt = parseFloat(preco);
-            console.log(preco);
+            
 
             html += '<tr class="linhaTable">';
             html += '<td>' +item.nitem+ '</td>';
-            html += '<td>' +item.cProd.replace(/^(0+)(\d)/g,"$2")+ '</td>';
+            html += '<td>' +codigo+ '</td>';
             html += '<td>' +item.cEAN+ '</td>';
             html += '<td>' +item.xprod+ '</td>';
             html += '<td>' +'R$ '+precoInt.toFixed(2)+ '</td>';
