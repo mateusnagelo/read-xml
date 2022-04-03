@@ -178,6 +178,6 @@ function openModal(){
         }
     })
 
-    document.getElementById('menuMobile').style.display = 'none';
+    c('linksUteis').style.width = '0px';
 
 };
