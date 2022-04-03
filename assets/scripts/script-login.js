@@ -6,7 +6,7 @@ function entrar(e) {
     const id = (elem) => {
        return document.getElementById(elem);
     }
-    
+
     const validEmail = id('email').value;
     const validPassword = id('password').value;
 
@@ -29,21 +29,22 @@ function entrar(e) {
     }
 }
 
-const id = (elem) => {
-    return document.getElementById(elem);
-}
+    const id = (elem) => {
+       return document.getElementById(elem);
+    }
+
 
 document.addEventListener('keypress', function(e){
-    if(e.key === 'Enter'){
+    if(e.key == 'Enter'){
         return entrar();
     }
-})
-
+});
 
 
 let acessarIndex = id('button');
 
 acessarIndex.addEventListener('click', entrar, false);
+
 
 
 

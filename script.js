@@ -165,4 +165,19 @@ function ocultarBotao(){
 
 window.addEventListener('scroll', ocultarBotao);
 
+// AREA MODAL MARKUP
 
+
+function openModal(){
+    let markUp = document.querySelector('#modal')
+    markUp.style.display = 'flex';
+    markUp.addEventListener('click', (e) => {
+        console.log(e.target)
+        if(e.target.id == 'modal' || e.target.className == 'closeModal'){
+            markUp.style.display = 'none';
+        }
+    })
+
+    document.getElementById('menuMobile').style.display = 'none';
+
+};

@@ -176,7 +176,8 @@ tr th{
     margin-bottom: 20px;
     color: #f5f5f5;
 }
-#links a{
+#links a,
+.marUkArea{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -187,15 +188,19 @@ tr th{
     padding: 10px 15px;
     transition: all 0.3s linear;
 }
-#links a:hover{
+#links a:hover,
+.marUkArea:hover{
     background-color: #f5f5ff10;
 }
 #links{
     padding-left: 0 !important;
 }
-#links a i{
+#links a i,
+.marUkArea i{
+    width: 40px;
     font-size: 1.5rem;
     color: #f5f5f5;
+    cursor: pointer;
 }
 #links a i img{
     width: 27px;
@@ -206,20 +211,32 @@ tr th{
     list-style: none;
     color: #f5f5f5;
 }
+.marUkArea{
+    margin-top: -18px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.marUkArea button{
+    background-color: transparent;
+    /* width: 80px; */
+    font-size: .9rem;
+    color: #f5f5f5;
+    /* padding: 5px 10px; */
+}
 #exit{
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: flex-start;
-    padding: 5px 20px;
+    padding: 5px 15px;
     text-decoration: none;
 }
 #exit i,
 #exit .sair{
     color: #f5f5f5;
-    font-size: 2.1rem;
-    margin-top: 100px;
+    font-size: 2rem;
+    
 }
 #exit .sair{
     font-size: 1rem;
@@ -267,4 +284,82 @@ tr th{
 .newConsult{
     font-size: 15px;
     margin-right: 20px;
+}
+
+
+#modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+}
+.modal--area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    min-width: 300px;
+    height: auto;
+    background-color:#f5f5f5;
+    border-radius: 10px;
+    padding: 30px 40px;
+    position: relative;
+    animation: modal .9s;
+}
+
+.markUp--title{
+    width: 100%;
+    text-align: center;
+    color: #353535;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0 20px 0;
+    padding: 5px;
+    border-bottom: 1px solid #353535;
+}
+.markUp--items img{
+    width: 100%;
+}
+.closeModal{
+    width: 40px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 90%;
+    background-color: var(--color-primary);
+    transition: all 0.4s ease;
+}
+.closeModal:hover{
+    opacity: 0.9;
+}
+
+
+@keyframes modal{
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+
+@media(max-width: 1476px){
+    td{
+        font-size: 12px;
+    }
+    tr th{
+        font-size: 12px;
+    }
 }
