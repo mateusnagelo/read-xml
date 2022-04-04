@@ -4,7 +4,10 @@ function mostrar() {
 
     const inputFile = document.getElementById("file");
     const btnUpload = document.getElementById("btn");
-    
+        if(inputFile.value === ''){
+            alert('Por favor, selecione um arquivo!')
+        }
+
         const xhr = new XMLHttpRequest();
         const formData = new FormData();
         for (const file of inputFile.files) {
