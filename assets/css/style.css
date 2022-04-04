@@ -34,7 +34,7 @@ header{
 .menuMobile img{
     cursor: pointer;
     transition: all 0.1s linear;
-    width: 40px;
+    width: 50px;
 }
 .menuMobile img:hover{
     padding: 3px;
@@ -137,12 +137,42 @@ tr th{
     flex-direction: column;
     justify-content: flex-start;
     flex: 1;
+    background-color: var(--color-primary);
+    padding: 0 10px;
+}
+.line{
+    background-color: #f5f5f5;
+    width:2px;
 }
 .cabecalhoItensValor{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 50px;
     justify-content: flex-start;
     flex: 1;
+    background-color: var(--color-primary);
+}
+.cabecalhoItensValor--item{
+    padding: 10px;
+}
+
+#fantasia,
+#cnpj,
+#chave,
+#nnf,
+#vprod,
+#vnf,
+#vbc,
+#vicms,
+#vbcst,
+#vst,
+#vpis,
+#vcof,
+#vipi,
+#voutros,
+#vdesc,
+#vfrete{
+    color: #f5f5f5;
 }
 .areaButtons{
     display: flex;

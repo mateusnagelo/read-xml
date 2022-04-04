@@ -13,7 +13,7 @@ function mostrar() {
         for (const file of inputFile.files) {
             formData.append("file", file)
         }
-        xhr.open("post", "http://localhost:8080/notafiscal")
+        xhr.open("post", "http://localhost:3000/notafiscal")
         xhr.send(formData)
         xhr.addEventListener('readystatechange', function () {
             if (xhr.readyState === 4 && xhr.status == 200) {
@@ -38,14 +38,25 @@ function mostrar() {
                 c('chave').innerHTML = 'Chave de acesso:' + ' ' + xml.chNFe;
                 c('cnpj').innerHTML = 'CNPJ:' + ' ' + xml.cnpj;
                 c('nnf').innerHTML = 'Número NF:' + ' ' + xml.nnf;
-                c('fantasia').innerHTML = 'Nome fantasia:' + ' ' + xml.xfant;
-
+                c('fantasia').innerHTML = 'Razão social:' + ' ' + xml.xnome;
+                c('vprod').innerHTML = 'Total dos produtos:'+ ' '+ xml.vProd;
+                c('vnf').innerHTML = 'Total NF:'+ ' ' + xml.vNF;
+                c('vbc').innerHTML = 'Total BC ICMS:' + ' ' + xml.vBc;
+                c('vicms').innerHTML = 'Total valor ICMS:' + ' ' + xml.vIcms;
+                c('vbcst').innerHTML = 'Total BC ICMSST:'+ ' ' + xml.vBCST;
+                c('vst').innerHTML = 'Total valor ICMSST:'+ ' ' +xml.vST; 
+                c('vpis').innerHTML = 'Total PIS:' + ' ' + xml.vPIS;
+                c('vcof').innerHTML = 'Total COFINS:' + ' ' + xml.vCOFINS;
+                c('vipi').innerHTML = 'Total IPI:'+ ' ' + xml.vIPI;
+                c('voutros').innerHTML = 'Total Despesas:' + ' ' + xml.vOutro;
+                c('vdesc').innerHTML = 'Total Descontos:' + ' ' + xml.vDesc;
+                c('vfrete').innerHTML = 'Total Frete:' + ' ' + xml.vFrete;
 
                 document.querySelector('.areaButtons').style.position = 'relative';
                 document.getElementById('footer').style.position = 'relative';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">Preço Un</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">R$ Preço</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -74,15 +85,21 @@ function mostrar() {
                     
                     let cest = item.cest
                     if(cest === null){
-                        cest = 'Sem info'
+                        cest = "***"
                     }
+
+                    let vDesc = item.vDesc
+                    if(vDesc === null){
+                        vDesc = "***"
+                    }
+                    
 
                     html += '<tr class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
-                    html += '<td>' + codigo + '</td>';
                     html += '<td>' + item.cEAN + '</td>';
                     html += '<td>' + item.xprod + '</td>';
                     html += '<td>' + 'R$ ' + precoInt.toFixed(2) + '</td>';
+                    html += '<td>' + vDesc + '</td>';
                     html += '<td>' + item.ncm + '</td>';
                     html += '<td>' + cest + '</td>';
                     html += '<td>' + item.cfop + '</td>';
@@ -92,7 +109,7 @@ function mostrar() {
                     html += '<td id="tdNone">' + item.pRedBCST + '</td>';
                     html += '<td>' + item.cstPis +' - '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' - '+ pisC +'</td>';
-                    html += '<td>' + item.cstIpi + '</td>';
+                    html += '<td>' + item.pIpi + '</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
