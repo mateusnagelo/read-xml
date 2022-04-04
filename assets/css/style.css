@@ -301,7 +301,7 @@ tr th{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 50%;
     min-width: 300px;
     height: auto;
     background-color:#f5f5f5;
