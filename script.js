@@ -48,12 +48,12 @@ function mostrar() {
                 c('vpis').innerHTML = 'Total PIS:' + ' ' + xml.vPIS;
                 c('vcof').innerHTML = 'Total COFINS:' + ' ' + xml.vCOFINS;
                 c('vipi').innerHTML = 'Total IPI:'+ ' ' + xml.vIPI;
-                c('voutros').innerHTML = 'Total Despesas:' + ' ' + xml.vOutro;
-                c('vdesc').innerHTML = 'Total Descontos:' + ' ' + xml.vDesc;
+                c('voutros').innerHTML = 'Total Desp:' + ' ' + xml.vOutro;
+                c('vdesc').innerHTML = 'Total Desc:' + ' ' + xml.vDesc;
                 c('vfrete').innerHTML = 'Total Frete:' + ' ' + xml.vFrete;
 
                 document.querySelector('.areaButtons').style.position = 'relative';
-                document.getElementById('footer').style.position = 'relative';
+                document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
                 let html = '<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">R$ Preço</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
@@ -113,7 +113,6 @@ function mostrar() {
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
-
                 });
             }
         })

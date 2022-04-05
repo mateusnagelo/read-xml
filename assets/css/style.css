@@ -97,6 +97,9 @@ main{
     color: #FFF;
     transition: all 0.2s linear;
 }
+#btn2{
+    margin-bottom: 20px;
+}
 #btn:hover,
 #btn2:hover,
 #btn3:hover{
@@ -147,7 +150,7 @@ tr th{
 .cabecalhoItensValor{
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
     justify-content: flex-start;
     flex: 1;
     background-color: var(--color-primary);
