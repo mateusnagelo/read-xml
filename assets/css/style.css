@@ -46,7 +46,7 @@ header .logoArea{
     align-items: center;
     gap: 15px;
     color: #FFF;
-    font-size: 1.4rem;
+    font-size: 1rem;
 }
 header .logoArea i,
 .logoContainer i{
@@ -99,6 +99,7 @@ main{
 }
 #btn2{
     margin-bottom: 20px;
+    font-size: .8rem;
 }
 #btn:hover,
 #btn2:hover,
@@ -176,6 +177,7 @@ tr th{
 #vdesc,
 #vfrete{
     color: #f5f5f5;
+    font-size: .9rem;
 }
 .titleInfosGeral{
     font-weight: bold;
@@ -218,7 +220,7 @@ tr th{
     text-decoration: none;
     color: #f5f5f5;
     border-bottom: 1px solid #9992db38;
-    padding: 10px 15px;
+    padding: 5px 15px;
     transition: all 0.3s linear;
 }
 #links a:hover,
@@ -240,7 +242,7 @@ tr th{
 }
 
 #links a li{
-    font-size: .9rem;
+    font-size: .8rem;
     list-style: none;
     color: #f5f5f5;
 }
@@ -375,7 +377,9 @@ tr th{
     opacity: 0.9;
 }
 
-
+td{
+    font-size: .9rem;
+}
 @keyframes modal{
     from {
         opacity: 0;
