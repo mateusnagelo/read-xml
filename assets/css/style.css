@@ -84,11 +84,19 @@ main{
     font-weight: bold;
     margin-bottom: 10px;
 }
-#btn{
+#btn,
+#btnExport{
     background-color: var(--color-primary);
     padding: 10px;
     color: #FFF;
     transition: all 0.2s linear;
+}
+#btnExport{
+    border: 0!important;
+    border-radius: 0px !important;
+    font-family: 'Inter';
+    display: none;
+    font-size: .8rem;
 }
 #btn2, #btn3{
     display: none;
@@ -103,7 +111,8 @@ main{
 }
 #btn:hover,
 #btn2:hover,
-#btn3:hover{
+#btn3:hover,
+#btnExport:hover{
     opacity: .8;
 }
 #load{
@@ -178,6 +187,7 @@ tr th{
 #vfrete{
     color: #f5f5f5;
     font-size: .9rem;
+    font-weight: 400;
 }
 .titleInfosGeral{
     font-weight: bold;
@@ -220,7 +230,7 @@ tr th{
     text-decoration: none;
     color: #f5f5f5;
     border-bottom: 1px solid #9992db38;
-    padding: 5px 15px;
+    padding: 8px 15px;
     transition: all 0.3s linear;
 }
 #links a:hover,
@@ -270,11 +280,12 @@ tr th{
 #exit i,
 #exit .sair{
     color: #f5f5f5;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    margin-top: 40px;
     
 }
 #exit .sair{
-    font-size: 1rem;
+    font-size: .9rem;
     margin-top: 0px;
 }
 
@@ -377,9 +388,22 @@ tr th{
     opacity: 0.9;
 }
 
+.titleItemsNFe{
+    color: #999;
+}
+
+
 td{
     font-size: .8rem;
 }
+th{
+    font-size: .9rem;
+}
+tbody, td, tfoot, th, thead tr {
+    border-color: black !important;
+}
+
+
 @keyframes modal{
     from {
         opacity: 0;

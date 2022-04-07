@@ -35,7 +35,7 @@
             <div class="cabecalhoContainer">
                 <div class="cabecalhoItens">
                     <div id="load"></div>
-                    <div id="fantasia"></div>
+                    <div id="fantasia"><span class="titleItemsNFe">Razão social:</span></div>
                     <div id="cnpj"></div>
                     <div id="chave"></div>
                     <div id="nnf"></div>
@@ -64,10 +64,9 @@
             </div>
         </div>
         <div id="items">
-            <table class="table" id="tableItems">
-                <thead class="thead-light">
-                    <tr></tr>
-                </thead>
+            <table data-js="table" class="table" id="tableItems">
+                <!-- <thead class="thead-light">
+                </thead> -->
                 <tbody id="tabela"></tbody>
             </table>
         </div>
@@ -81,6 +80,7 @@
         </div>
         <div id="buttons">
             <button id="btn" onclick="mostrar()">Processar</button>
+            <a data-js="export-table-btn" role="button" class="btn btn-info" id="btnExport">Exportar para CSV</a>
             <button id="btn2" onclick="voltar()">Nova consulta</button>
         </div>
     </div>

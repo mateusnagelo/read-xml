@@ -34,6 +34,7 @@ function mostrar() {
                 c('linksUteis').style.width = '0px';
                 c('btn2').style.display = 'inline-block';
                 c('btn3').style.display = 'inline-block';
+                c('btnExport').style.display = 'inline-block';
 
                 c('chave').innerHTML = 'Chave de acesso:' + ' ' + xml.chNFe;
                 c('cnpj').innerHTML = 'CNPJ:' + ' ' + xml.cnpj;
@@ -56,7 +57,7 @@ function mostrar() {
                 document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr><th scope="col">Item</th><th scope="col">Código de barras</th><th scope="col">Descrição</th><th scope="col">R$ Preço</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Codigo de barras</th><th scope="col">Descricao</th><th scope="col">R$ Valor</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST NFe</th><th scope="col">CST Cad.</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -94,6 +95,78 @@ function mostrar() {
                     }
                     
 
+                    
+                    let newCst = ''
+
+                    if(item.cstCson == '020' 
+                        || item.cstCson == '120' 
+                        || item.cstCson == '220' 
+                        || item.cstCson == '320' 
+                        || item.cstCson == '420'
+                        || item.cstCson == '520'
+                        || item.cstCson == '620'
+                        || item.cstCson == '720'
+                        || item.cstCson == '820'
+                        || item.cstCson == '920'
+                    ){
+                        newCst = '000';
+
+                    }else if(item.cstCson == '060' 
+                        || item.cstCson == '160' 
+                        || item.cstCson == '260' 
+                        || item.cstCson == '360'
+                        || item.cstCson == '460' 
+                        || item.cstCson == '560'
+                        || item.cstCson == '660'
+                        || item.cstCson == '760'
+                        || item.cstCson == '860'
+                        || item.cstCson == '960'
+                    ){
+                            newCst = '060';  
+
+                    }else if(item.cstCson == '000'
+                        || item.cstCson == '100'
+                        || item.cstCson == '200'
+                        || item.cstCson == '300'
+                        || item.cstCson == '400'
+                        || item.cstCson == '500'
+                        || item.cstCson == '600'
+                        || item.cstCson == '700'
+                        || item.cstCson == '800'
+                        || item.cstCson == '900'
+                    ){
+                            newCst = '000'; 
+
+                    }else if(item.cstCson == '040'
+                        || item.cstCson == '140'
+                        || item.cstCson == '240'
+                        || item.cstCson == '340'
+                        || item.cstCson == '440'
+                        || item.cstCson == '540'
+                        || item.cstCson == '640'
+                        || item.cstCson == '740'
+                        || item.cstCson == '840'
+                        || item.cstCson == '940'
+                    ){
+                            newCst = '040';
+
+                    }else if(item.cstCson == '010'
+                        || item.cstCson == '110'
+                        || item.cstCson == '210'
+                        || item.cstCson == '310'
+                        || item.cstCson == '410'
+                        || item.cstCson == '510'
+                        || item.cstCson == '610'
+                        || item.cstCson == '710'
+                        || item.cstCson == '810'
+                        || item.cstCson == '910'
+                    ){
+                        newCst = '000';
+                    }
+
+                    
+
+
                     html += '<tr class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.cEAN + '</td>';
@@ -104,11 +177,12 @@ function mostrar() {
                     html += '<td>' + cest + '</td>';
                     html += '<td>' + item.cfop + '</td>';
                     html += '<td>' + item.cstCson + '</td>';
+                    html += '<td>' + newCst +'</td>';
                     html += '<td>' + bcIcmsInt + ' %' + '</td>';
                     html += '<td>' + item.pRedBC + '%' + '</td>';
                     html += '<td id="tdNone">' + item.pRedBCST + '</td>';
-                    html += '<td>' + item.cstPis +' - '+ item.cstCofins +'</td>';
-                    html += '<td>' + pisC +' - '+ pisC +'</td>';
+                    html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
+                    html += '<td>' + pisC +' | '+ pisC +'</td>';
                     html += '<td>' + item.pIpi + '</td>';
                     html += '</tr>';
 
@@ -233,4 +307,23 @@ reloadBody.addEventListener('click', () => {
 
 reloadNav.addEventListener('click', () => {
     location.reload()
+})
+
+
+// EXPORTAR EXCEL 
+
+const tableRows = document.getElementsByClassName('linhaTable')
+const exportBtn = document.querySelector('[data-js="export-table-btn"]')
+
+exportBtn.addEventListener('click', () => {
+    const CSVString = Array.from(tableRows)
+    .map( row => Array.from(row.cells)
+        .map(cell => cell.textContent)
+        .join(',')
+        )
+        .join('\n')
+
+        exportBtn.setAttribute('href', 
+        `data:text/csvcharset=UTF-8,${encodeURIComponent(CSVString)}`)
+        exportBtn.setAttribute('download', 'table.csv')
 })
