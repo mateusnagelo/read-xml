@@ -21,7 +21,7 @@
         <div class="headerContainer container">
             <div class="logoContainer">
                 <i class="fa-brands fa-buffer"></i>
-                <div class="logoArea">Extrator Fiscal - XML</div>
+                <a href="page-home.html"><div class="logoArea">Extrator Fiscal - XML</div></a>
             </div>
             <div class="menuMobile">
                 <button id="btn3" class="newConsult" onclick="voltar()">Nova consulta</button>
@@ -105,10 +105,12 @@
                 <a href="https://cosmos.bluesoft.com.br/ncms" target="_blank"><i class="fa-brands fa-accusoft"></i><li>Consultar NCM | Cosmos</li></a>
                 <a href="https://cosmos.bluesoft.com.br/tabelas/tabela-municipios-ibge" target="_blank"><i class="fa-solid fa-city"></i><li>Código municípios | Cosmos</li></a>
                 <a href="http://www.sintegra.gov.br/" target="_blank"><i class="fa-solid fa-file-shield"></i><li>Consultar IE pelo CNPJ | SINTEGRA.GOV</li></a>
+                <a href="#" class="logXml marUkArea"><i class="fa-solid fa-clock-rotate-left"></i><li>Histórico de consultas</li></a>
             </ul>
             <div class="marUkArea" onclick="openModal()">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
                 <button id="markup" >MarkUp</button>
+                <!-- <button class="logXml marUkArea"><i class="fa-solid fa-clock-rotate-left"></i><li>Histórico de Consultas</li></button> -->
             </div>
             <a href="index.html" id="exit">
                 <i class="fa-solid fa-person-running"></i>
@@ -132,6 +134,26 @@
             </div>
         </div>
     </div>
+    </section>
+    <section id="modal--historico">
+        <div class="modal--hisotoricoArea" id="modalHistorico">
+            <div class="modal--hisotoricoArea--title">
+                <div class="modal--historico--title">
+                    <h1>Notas já consultadas por mim</h1>
+                    <div class="modal--historico--description">
+                        Lista dos xmls que você já consultou
+                    </div>
+                </div>
+                <div class="modal--historico--contents">
+                    <div class="modal--historico--content"></div>
+                </div>
+                <div class="imgEmpty">
+                    <img src="assets/images/empty.png" alt="empty_xml">
+                    <div class="emptyText">Não há hisórico de consultas.</div>
+                </div>
+                <img class='closeModalHistorico' id="fecharModal" src="assets/images/close.png" alt="fechar">
+            </div>
+        </div>
     </section>
 </main>
 <footer id="footer">

@@ -190,7 +190,8 @@ function mostrar() {
                 });
             }
         })
-    }
+}
+
 // FUNCTION PARA LIMPAR A TELA E VOLTAR PARA NOVA CONSULTA
 
 
@@ -200,11 +201,6 @@ function voltar() {
     if (document.getElementById('file').style.display == 'none') {
         document.getElementById('file').style.display = 'inline-block'
     }
-
-    // document.getElementById('btn').style.display;
-    // if (document.getElementById('btn').style.display == 'none') {
-    //     document.getElementById('btn').style.display = 'inline-block'
-    // }
     document.querySelector('.areaButtons').style.position;
     if (document.querySelector('.areaButtons').style.position == 'relative') {
         document.querySelector('.areaButtons').style.position = 'fixed';
@@ -296,9 +292,11 @@ function openModal() {
 
 };
 
+// RELOADA NA PAGINA 
 
 const reloadBody = c('btn2')
 const reloadNav = c('btn3')
+const reloadModal = c('fecharModal')
 
 reloadBody.addEventListener('click', () => {
     location.reload()
@@ -309,7 +307,9 @@ reloadNav.addEventListener('click', () => {
     location.reload()
 })
 
-
+reloadModal.addEventListener('click', () => {
+    location.reload()
+})
 // EXPORTAR EXCEL 
 
 const tableRows = document.getElementsByClassName('linhaTable')
@@ -326,4 +326,43 @@ exportBtn.addEventListener('click', () => {
         exportBtn.setAttribute('href', 
         `data:text/csvcharset=UTF-8,${encodeURIComponent(CSVString)}`)
         exportBtn.setAttribute('download', 'table.csv')
+})
+
+// MOSTRAR LOG DAS NOTAS JÁ CONSULTADAS
+
+const qSel = (elem) => document.querySelector(elem)
+
+document.querySelector('.logXml').addEventListener('click', async () => {
+
+    qSel('.modal--hisotoricoArea').style.display = 'block'
+
+    let urlList = 'http://localhost:3000/lista'
+    let resultList = await fetch(urlList)
+    let jsonList = await resultList.json()
+    
+    jsonList.map((item) => {
+
+        // let dataConsulta 
+        let logList = document.querySelector('.modal--historico--content').innerHTML = `<strong>Chave de acesso:</strong> ${item.xml}`
+            if(logList.innerHTML == ``){
+                qSel('.imgEmpty').style.display = 'flex'
+            }
+
+        let listArea = qSel('.modal--historico--contents')
+        let cloneList = listArea.children[0].cloneNode(true)
+        listArea.appendChild(cloneList)
+
+        document.querySelector('.modal--historico--content').innerHTML = ''
+        
+    })
+})
+
+const closeModal = qSel('.closeModalHistorico').addEventListener('click', () => {
+    qSel('.modal--hisotoricoArea').style.display = 'none'
+})
+qSel('#modalHistorico').addEventListener('click', (e) => {
+    if(e.target.id == 'modalHistorico'){
+        qSel('.modal--hisotoricoArea').style.display = 'none'
+        location.reload()
+    }
 })
