@@ -57,7 +57,7 @@ function mostrar() {
                 document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Codigo de barras</th><th scope="col">Descricao</th><th scope="col">R$ Valor</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST NFe</th><th scope="col">CST Cad.</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col" id="tdNone2">%RED.ICMSST</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">R$ Valor</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST NFe</th><th scope="col">CST Cad.</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS Deson</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -83,15 +83,34 @@ function mostrar() {
                     let preco = item.preco;
                     let precoInt = parseFloat(preco);
 
+                    let ipi = item.vIpi
+                    let ipiFloat = parseFloat(ipi)
                     
+                    let qdt = item.quantidade
+                    let qdtInt = parseInt(qdt).toFixed(0)
+            
+
+                    let icmsSt = item.pRedBCST
+                    icmsStFloa = parseFloat(icmsSt)
+
+                    let percentFCP = item.pFCP 
+                        if(percentFCP === null || percentFCP == '0.0000'){
+                            percentFCP = '0,00'
+                        }
+
+                    let valueFCP = item.vFCP
+                        if(valueFCP === null || valueFCP == '0.0000'){
+                            valueFCP = '0,00'
+                        }
+
                     let cest = item.cest
                     if(cest === null){
-                        cest = "***"
+                        cest = ''
                     }
 
                     let vDesc = item.vDesc
                     if(vDesc === null){
-                        vDesc = "***"
+                        vDesc = '0,00'
                     }
                     
 
@@ -164,14 +183,11 @@ function mostrar() {
                         newCst = '000';
                     }
 
-                    
-
-
                     html += '<tr class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
-                    html += '<td>' + item.cEAN + '</td>';
                     html += '<td>' + item.xprod + '</td>';
-                    html += '<td>' + 'R$ ' + precoInt.toFixed(2) + '</td>';
+                    html += '<td>' + qdtInt + '</td>'
+                    html += '<td>' + '<strong>R$</strong> ' + precoInt.toFixed(2) + '</td>';
                     html += '<td>' + vDesc + '</td>';
                     html += '<td>' + item.ncm + '</td>';
                     html += '<td>' + cest + '</td>';
@@ -180,10 +196,13 @@ function mostrar() {
                     html += '<td>' + newCst +'</td>';
                     html += '<td>' + bcIcmsInt + ' %' + '</td>';
                     html += '<td>' + item.pRedBC + '%' + '</td>';
-                    html += '<td id="tdNone">' + item.pRedBCST + '</td>';
+                    // html += '<td id="tdNone">' + icmsStFloa.toFixed(2) + '</td>';
                     html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
-                    html += '<td>' + item.pIpi + '</td>';
+                    html += '<td>' + ipiFloat.toFixed(2) + '</td>';
+                    html += '<td>' + percentFCP + '</td>';
+                    html += '<td>' + valueFCP + '</td>';
+                    html += '<td>' + '<strong>R$</strong> '+item.vICMSDeson+'</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
@@ -342,21 +361,18 @@ document.querySelector('.logXml').addEventListener('click', async () => {
     
     jsonList.map((item) => {
 
-        // let dataConsulta 
         let logList = document.querySelector('.modal--historico--content').innerHTML = `<strong>Chave de acesso:</strong> ${item.xml}`
-            if(logList.innerHTML == ``){
-                qSel('.imgEmpty').style.display = 'flex'
-            }
-
         let listArea = qSel('.modal--historico--contents')
         let cloneList = listArea.children[0].cloneNode(true)
         listArea.appendChild(cloneList)
 
+            if(logList.innerHTML === ''){
+                qSel('.imgEmpty').style.display = 'flex'
+            }
         document.querySelector('.modal--historico--content').innerHTML = ''
         
     })
 })
-
 const closeModal = qSel('.closeModalHistorico').addEventListener('click', () => {
     qSel('.modal--hisotoricoArea').style.display = 'none'
 })
