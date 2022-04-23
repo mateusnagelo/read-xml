@@ -13,7 +13,7 @@ function mostrar() {
         for (const file of inputFile.files) {
             formData.append("file", file)
         }
-        xhr.open("post", "http://localhost:3000/notafiscal")
+        xhr.open("post", "http://93.188.166.54:3000/notafiscal")
         xhr.send(formData)
         xhr.addEventListener('readystatechange', function () {
             if (xhr.readyState === 4 && xhr.status == 200) {
@@ -52,12 +52,14 @@ function mostrar() {
                 c('voutros').innerHTML = 'Total Desp:' + ' ' + xml.vOutro;
                 c('vdesc').innerHTML = 'Total Desc:' + ' ' + xml.vDesc;
                 c('vfrete').innerHTML = 'Total Frete:' + ' ' + xml.vFrete;
+                c('vfcp').innerHTML = 'Valor FCP:'+' '+xml.vFCP;
+
 
                 document.querySelector('.areaButtons').style.position = 'relative';
                 document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">R$ Valor</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST NFe</th><th scope="col">CST Cad.</th><th scope="col">%ICMS</th><th scope="col">%RED.ICMS</th><th scope="col">PIS/COFINS<br>Venda</th><th scope="col">PIS/COFINS<br>Compra</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS Deson</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">R$Total</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">ICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">ICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COFINS<br>Venda</th><th scope="col">PIS|COFINS<br>Compra</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS Deson</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -66,21 +68,25 @@ function mostrar() {
                     let pisC = '';
 
                     if (item.cstPis == "01") {
-                        pisC = "50";
+                        pisC = "50"
                     } else if (item.cstPis == "06") {
-                        pisC = "73";
+                        pisC = "73"
                     } else if (item.cstPis == "04") {
-                        pisC = "70";
+                        pisC = "70"
                     } else if (item.cstPis == "08"){
-                        pisC = "***";
+                        pisC = "***"
+                    } else if (item.cstPis == "02"){
+                        pisC = "***"
+                    } else if (item.cstPis == "99"){
+                        pisC = "***"
                     }
 
-                    let bcIcms = item.pIcms;
+                    let bcIcms = item.pICMS;
                     let bcIcmsInt = parseInt(bcIcms);
 
                     let codigo = item.cProd.replace(/^(0+)(\d)/g, "$2");
 
-                    let preco = item.preco;
+                    let preco = item.total;
                     let precoInt = parseFloat(preco);
 
                     let ipi = item.vIpi
@@ -93,14 +99,17 @@ function mostrar() {
                     let icmsSt = item.pRedBCST
                     icmsStFloa = parseFloat(icmsSt)
 
+                    let redIcms = item.pRedBC
+                    redIcms = parseFloat(redIcms)
+
                     let percentFCP = item.pFCP 
                         if(percentFCP === null || percentFCP == '0.0000'){
-                            percentFCP = '0,00'
+                            percentFCP = '0.00'
                         }
 
                     let valueFCP = item.vFCP
                         if(valueFCP === null || valueFCP == '0.0000'){
-                            valueFCP = '0,00'
+                            valueFCP = '0.00'
                         }
 
                     let cest = item.cest
@@ -113,76 +122,18 @@ function mostrar() {
                         vDesc = '0,00'
                     }
                     
+                    let vIcms = item.vICMS
+                    vIcmsFloat = parseFloat(vIcms)
 
+                    let icmsDeson = item.vICMSDeson
+                    icmsDesonFloat = parseFloat(icmsDeson)
+
+                    let pIcmsSt = item.pICMSST
+                    icmsStFloat = parseFloat(pIcmsSt)
+
+                    let vIcmsSt = item.vICMSST
+                    vIcmsStFloat = parseFloat(vIcmsSt)
                     
-                    let newCst = ''
-
-                    if(item.cstCson == '020' 
-                        || item.cstCson == '120' 
-                        || item.cstCson == '220' 
-                        || item.cstCson == '320' 
-                        || item.cstCson == '420'
-                        || item.cstCson == '520'
-                        || item.cstCson == '620'
-                        || item.cstCson == '720'
-                        || item.cstCson == '820'
-                        || item.cstCson == '920'
-                    ){
-                        newCst = '000';
-
-                    }else if(item.cstCson == '060' 
-                        || item.cstCson == '160' 
-                        || item.cstCson == '260' 
-                        || item.cstCson == '360'
-                        || item.cstCson == '460' 
-                        || item.cstCson == '560'
-                        || item.cstCson == '660'
-                        || item.cstCson == '760'
-                        || item.cstCson == '860'
-                        || item.cstCson == '960'
-                    ){
-                            newCst = '060';  
-
-                    }else if(item.cstCson == '000'
-                        || item.cstCson == '100'
-                        || item.cstCson == '200'
-                        || item.cstCson == '300'
-                        || item.cstCson == '400'
-                        || item.cstCson == '500'
-                        || item.cstCson == '600'
-                        || item.cstCson == '700'
-                        || item.cstCson == '800'
-                        || item.cstCson == '900'
-                    ){
-                            newCst = '000'; 
-
-                    }else if(item.cstCson == '040'
-                        || item.cstCson == '140'
-                        || item.cstCson == '240'
-                        || item.cstCson == '340'
-                        || item.cstCson == '440'
-                        || item.cstCson == '540'
-                        || item.cstCson == '640'
-                        || item.cstCson == '740'
-                        || item.cstCson == '840'
-                        || item.cstCson == '940'
-                    ){
-                            newCst = '040';
-
-                    }else if(item.cstCson == '010'
-                        || item.cstCson == '110'
-                        || item.cstCson == '210'
-                        || item.cstCson == '310'
-                        || item.cstCson == '410'
-                        || item.cstCson == '510'
-                        || item.cstCson == '610'
-                        || item.cstCson == '710'
-                        || item.cstCson == '810'
-                        || item.cstCson == '910'
-                    ){
-                        newCst = '000';
-                    }
-
                     html += '<tr class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.xprod + '</td>';
@@ -193,16 +144,17 @@ function mostrar() {
                     html += '<td>' + cest + '</td>';
                     html += '<td>' + item.cfop + '</td>';
                     html += '<td>' + item.cstCson + '</td>';
-                    html += '<td>' + newCst +'</td>';
                     html += '<td>' + bcIcmsInt + ' %' + '</td>';
-                    html += '<td>' + item.pRedBC + '%' + '</td>';
-                    // html += '<td id="tdNone">' + icmsStFloa.toFixed(2) + '</td>';
+                    html += '<td>' + '<strong>R$</strong> ' + vIcmsFloat.toFixed(2) + '</td>';
+                    html += '<td>' + redIcms + '%' + '</td>';
+                    html += '<td>' + icmsStFloat.toFixed(2) + '%' +'</td>';
+                    html += '<td>' +'<strong>R$</strong> '+vIcmsStFloat.toFixed(2) +'</td>';
                     html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
-                    html += '<td>' + ipiFloat.toFixed(2) + '</td>';
+                    html += '<td>' +ipiFloat.toFixed(2)+ '</td>';
                     html += '<td>' + percentFCP + '</td>';
                     html += '<td>' + valueFCP + '</td>';
-                    html += '<td>' + '<strong>R$</strong> '+item.vICMSDeson+'</td>';
+                    html += '<td>' + '<strong>R$</strong> '+icmsDesonFloat.toFixed(2)+'</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
@@ -355,7 +307,7 @@ document.querySelector('.logXml').addEventListener('click', async () => {
 
     qSel('.modal--hisotoricoArea').style.display = 'block'
 
-    let urlList = 'http://localhost:3000/lista'
+    let urlList = 'http://93.188.166.54:3000/lista'
     let resultList = await fetch(urlList)
     let jsonList = await resultList.json()
     
