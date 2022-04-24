@@ -13,7 +13,7 @@ function mostrar() {
         for (const file of inputFile.files) {
             formData.append("file", file)
         }
-        xhr.open("post", "http://93.188.166.54:3000/notafiscal")
+        xhr.open("post", "http://localhost:3000/notafiscal")
         xhr.send(formData)
         xhr.addEventListener('readystatechange', function () {
             if (xhr.readyState === 4 && xhr.status == 200) {
@@ -36,30 +36,30 @@ function mostrar() {
                 c('btn3').style.display = 'inline-block';
                 c('btnExport').style.display = 'inline-block';
 
-                c('chave').innerHTML = 'Chave de acesso:' + ' ' + xml.chNFe;
-                c('cnpj').innerHTML = 'CNPJ:' + ' ' + xml.cnpj;
-                c('nnf').innerHTML = 'Número NF:' + ' ' + xml.nnf;
-                c('fantasia').innerHTML = 'Razão social:' + ' ' + xml.xnome;
-                c('vprod').innerHTML = 'Total dos produtos:'+ ' '+ xml.vProd;
-                c('vnf').innerHTML = 'Total NF:'+ ' ' + xml.vNF;
-                c('vbc').innerHTML = 'Total BC ICMS:' + ' ' + xml.vBc;
-                c('vicms').innerHTML = 'Total valor ICMS:' + ' ' + xml.vIcms;
-                c('vbcst').innerHTML = 'Total BC ICMSST:'+ ' ' + xml.vBCST;
-                c('vst').innerHTML = 'Total valor ICMSST:'+ ' ' +xml.vST; 
-                c('vpis').innerHTML = 'Total PIS:' + ' ' + xml.vPIS;
-                c('vcof').innerHTML = 'Total COFINS:' + ' ' + xml.vCOFINS;
-                c('vipi').innerHTML = 'Total IPI:'+ ' ' + xml.vIPI;
-                c('voutros').innerHTML = 'Total Desp:' + ' ' + xml.vOutro;
-                c('vdesc').innerHTML = 'Total Desc:' + ' ' + xml.vDesc;
-                c('vfrete').innerHTML = 'Total Frete:' + ' ' + xml.vFrete;
-                c('vfcp').innerHTML = 'Valor FCP:'+' '+xml.vFCP;
+                c('chave').innerHTML = 'Chave de acesso:'+' '+'<span class="bgLineCabecalho">'+xml.chNFe+'</span>'
+                c('cnpj').innerHTML = 'CNPJ:'+' '+'<span class="bgLineCabecalho">'+xml.cnpj+'</span>'
+                c('nnf').innerHTML = 'Número NF:'+' '+'<span class="bgLineCabecalho">'+xml.nnf+'</span>'
+                c('fantasia').innerHTML = 'Razão social:'+' '+'<span class="bgLineCabecalho">'+xml.xnome+'</span>'
+                c('vprod').innerHTML = 'Total dos produtos:'+' '+'<span class="bgLineCabecalho">'+xml.vProd+'</span>'
+                c('vnf').innerHTML = 'Total NF:'+' '+'<span class="bgLineCabecalho">'+xml.vNF+'</span>'
+                c('vbc').innerHTML = 'Total BC ICMS:'+' '+'<span class="bgLineCabecalho">'+xml.vBc+'</span>'
+                c('vicms').innerHTML = 'Total valor ICMS:'+' '+'<span class="bgLineCabecalho">'+ xml.vIcms+'</span>'
+                c('vbcst').innerHTML = 'Total BC ICMSST:'+' '+'<span class="bgLineCabecalho">'+ xml.vBCST+'</span>'
+                c('vst').innerHTML = 'Total valor ICMSST:'+' '+'<span class="bgLineCabecalho">'+xml.vST+'</span>'
+                c('vpis').innerHTML = 'Total PIS:'+' ' + '<span class="bgLineCabecalho">'+xml.vPIS+'</span>'
+                c('vcof').innerHTML = 'Total COFINS:'+' '+'<span class="bgLineCabecalho">'+xml.vCOFINS+'</span>'
+                c('vipi').innerHTML = 'Total IPI:'+' '+'<span class="bgLineCabecalho">'+xml.vIPI+'</span>'
+                c('voutros').innerHTML = 'Total Desp:'+' '+'<span class="bgLineCabecalho">'+xml.vOutro+'</span>'
+                c('vdesc').innerHTML = 'Total Desc:'+' '+'<span class="bgLineCabecalho">'+xml.vDesc+'</span>'
+                c('vfrete').innerHTML = 'Total Frete:'+' '+'<span class="bgLineCabecalho">'+xml.vFrete+'</span>'
+                c('vfcp').innerHTML = 'Valor FCP:'+' '+'<span class="bgLineCabecalho">'+xml.vFCP+'</span>'
 
 
                 document.querySelector('.areaButtons').style.position = 'relative';
                 document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">R$Total</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">ICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">ICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COFINS<br>Venda</th><th scope="col">PIS|COFINS<br>Compra</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS Deson</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">Und</th><th scope="col">R$Total</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">pICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">pICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COF<br>Venda</th><th scope="col">PIS|COF<br>Compra</th><th scope="col">R$IPI</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS</br>Deson</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -92,6 +92,11 @@ function mostrar() {
                     let ipi = item.vIpi
                     let ipiFloat = parseFloat(ipi)
                     
+                    let pIpiItem = item.pIpi
+                    if(pIpiItem === '0.0000'){
+                        pIpiItem = '0.00'
+                    }
+
                     let qdt = item.quantidade
                     let qdtInt = parseInt(qdt).toFixed(0)
             
@@ -119,14 +124,17 @@ function mostrar() {
 
                     let vDesc = item.vDesc
                     if(vDesc === null){
-                        vDesc = '0,00'
+                        vDesc = '0.00'
                     }
                     
                     let vIcms = item.vICMS
                     vIcmsFloat = parseFloat(vIcms)
 
-                    let icmsDeson = item.vICMSDeson
-                    icmsDesonFloat = parseFloat(icmsDeson)
+                    if (item.vICMSDeson === null){
+                        item.vICMSDeson = '0.00'
+                     }else if(item.vICMSDeson == '0.0000'){
+                        item.vICMSDeson = '0.00'
+                     }
 
                     let pIcmsSt = item.pICMSST
                     icmsStFloat = parseFloat(pIcmsSt)
@@ -137,24 +145,26 @@ function mostrar() {
                     html += '<tr class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.xprod + '</td>';
-                    html += '<td>' + qdtInt + '</td>'
-                    html += '<td>' + '<strong>R$</strong> ' + precoInt.toFixed(2) + '</td>';
+                    html += '<td>' + qdtInt +'</td>'
+                    html += '<td>' + item.unidade +'</td>'
+                    html += '<td>' + precoInt.toFixed(2) + '</td>';
                     html += '<td>' + vDesc + '</td>';
                     html += '<td>' + item.ncm + '</td>';
                     html += '<td>' + cest + '</td>';
                     html += '<td>' + item.cfop + '</td>';
                     html += '<td>' + item.cstCson + '</td>';
                     html += '<td>' + bcIcmsInt + ' %' + '</td>';
-                    html += '<td>' + '<strong>R$</strong> ' + vIcmsFloat.toFixed(2) + '</td>';
+                    html += '<td>' + vIcmsFloat.toFixed(2) + '</td>';
                     html += '<td>' + redIcms + '%' + '</td>';
-                    html += '<td>' + icmsStFloat.toFixed(2) + '%' +'</td>';
-                    html += '<td>' +'<strong>R$</strong> '+vIcmsStFloat.toFixed(2) +'</td>';
+                    html += '<td>' + icmsStFloat.toFixed(0) + '%' +'</td>';
+                    html += '<td>' +vIcmsStFloat.toFixed(2) +'</td>';
                     html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
                     html += '<td>' +ipiFloat.toFixed(2)+ '</td>';
+                    html += '<td>' +pIpiItem+ '</td>';
                     html += '<td>' + percentFCP + '</td>';
                     html += '<td>' + valueFCP + '</td>';
-                    html += '<td>' + '<strong>R$</strong> '+icmsDesonFloat.toFixed(2)+'</td>';
+                    html += '<td>' + item.vICMSDeson+'</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
@@ -219,7 +229,7 @@ function abrirMenu() {
 
 // FECHAR MENU AO SCROLLAR 
 
-function fecharMenu() {
+function fecharMenu(e) {
     if (window.scrollY > 0) {
         c('linksUteis').style.width = '0px';
     }
@@ -227,6 +237,12 @@ function fecharMenu() {
 
 window.addEventListener('scroll', fecharMenu);
 
+c('linksUteis').addEventListener('click', (e) =>{
+    console.log(e.target)
+    if(e.target.id != 'linksUteis' || e.target.id == 'inputArea'){
+        c('linksUteis').style.width = '0px'
+    }
+})
 
 
 function subirTela() {
@@ -307,13 +323,13 @@ document.querySelector('.logXml').addEventListener('click', async () => {
 
     qSel('.modal--hisotoricoArea').style.display = 'block'
 
-    let urlList = 'http://93.188.166.54:3000/lista'
+    let urlList = 'http://localhost:3000/lista'
     let resultList = await fetch(urlList)
     let jsonList = await resultList.json()
     
     jsonList.map((item) => {
 
-        let logList = document.querySelector('.modal--historico--content').innerHTML = `<strong>Chave de acesso:</strong> ${item.xml}`
+        let logList = document.querySelector('.modal--historico--content').innerHTML = `<strong>Chave de acesso e data da consulta:</strong> ${item.xml +' - '+ item.dateUpload}`
         let listArea = qSel('.modal--historico--contents')
         let cloneList = listArea.children[0].cloneNode(true)
         listArea.appendChild(cloneList)

@@ -155,7 +155,7 @@ tr th{
     justify-content: flex-start;
     flex: 1;
     background-color: var(--color-primary);
-    padding: 0 10px;
+    padding: 10px;
 }
 .line{
     background-color: #f5f5f5;
@@ -164,7 +164,7 @@ tr th{
 .cabecalhoItensValor{
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 5px;
     justify-content: flex-start;
     flex: 1;
     background-color: var(--color-primary);
@@ -194,6 +194,11 @@ tr th{
     font-size: .9rem;
     font-weight: 400;
 }
+.bgLineCabecalho{
+    color: #f5f5f5;
+    padding: 0 5px;
+    font-size: .9rem;
+}
 .titleInfosGeral{
     font-weight: bold;
 }
@@ -206,7 +211,6 @@ tr th{
     position: fixed;
     top: 50%;
 }
-
 #linksUteis{
     width: 0px;
     height: calc(100vh - 55px);
@@ -287,19 +291,21 @@ tr th{
 }
 #exit{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 5px 15px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 10px;
     text-decoration: none;
+    transition: all 0.3s linear;
 }
-#exit i,
 #exit .sair{
     color: #f5f5f5;
     font-size: 1.4rem;
     margin-top: 40px;
-    
+}
+#exit img{
+    width: 25px;
 }
 #exit .sair{
     font-size: .9rem;
@@ -470,7 +476,6 @@ tr th{
     cursor: pointer;
     padding: 10px;
     border-radius: 90%;
-    background-color: var(--color-primary);
     transition: all 0.4s ease;
 }
 .closeModal:hover{
@@ -504,15 +509,25 @@ tr th{
     font-size: 15px !important;
 }
 td{
-    font-size: .8rem;
+    font-size: .8rem !important;
+    border-left: 1px solid #000 !important;
+    border-right: 1px solid #000 !important;
 }
 th{
-    font-size: .9rem;
+    font-size: .8rem !important;
+    border-top: 1px solid #000 !important;
+    border-left: 1px solid #000 !important;
+    border-right: 1px solid #000 !important;
+    background-color: var(--color-primary) !important;
+    color: #FFF !important;
+    font-weight: normal !important;
 }
 tbody, td, tfoot, th, thead tr {
     border-color: black !important;
 }
-
+.table>:not(caption)>*>*{
+    padding: 0.2rem 0.5rem;
+}
 
 @keyframes modal{
     from {
