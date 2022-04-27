@@ -36,8 +36,10 @@ function mostrar() {
                 c('btn3').style.display = 'inline-block';
                 c('btnExport').style.display = 'inline-block';
 
+                let cnpj = xml.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")
+               
                 c('chave').innerHTML = 'Chave de acesso:'+' '+'<span class="bgLineCabecalho">'+xml.chNFe+'</span>'
-                c('cnpj').innerHTML = 'CNPJ:'+' '+'<span class="bgLineCabecalho">'+xml.cnpj+'</span>'
+                c('cnpj').innerHTML = 'CNPJ/CPF:'+' '+'<span class="bgLineCabecalho">'+cnpj+'</span>'
                 c('nnf').innerHTML = 'Número NF:'+' '+'<span class="bgLineCabecalho">'+xml.nnf+'</span>'
                 c('fantasia').innerHTML = 'Razão social:'+' '+'<span class="bgLineCabecalho">'+xml.xnome+'</span>'
                 c('vprod').innerHTML = 'Total dos produtos:'+' '+'<span class="bgLineCabecalho">'+xml.vProd+'</span>'
@@ -52,7 +54,7 @@ function mostrar() {
                 c('voutros').innerHTML = 'Total Desp:'+' '+'<span class="bgLineCabecalho">'+xml.vOutro+'</span>'
                 c('vdesc').innerHTML = 'Total Desc:'+' '+'<span class="bgLineCabecalho">'+xml.vDesc+'</span>'
                 c('vfrete').innerHTML = 'Total Frete:'+' '+'<span class="bgLineCabecalho">'+xml.vFrete+'</span>'
-                c('vfcp').innerHTML = 'Valor FCP:'+' '+'<span class="bgLineCabecalho">'+xml.vFCP+'</span>'
+                c('vfcp').innerHTML = 'Total FCP:'+' '+'<span class="bgLineCabecalho">'+xml.vFCP+'</span>'
 
 
                 document.querySelector('.areaButtons').style.position = 'relative';
@@ -142,7 +144,7 @@ function mostrar() {
                     let vIcmsSt = item.vICMSST
                     vIcmsStFloat = parseFloat(vIcmsSt)
                     
-                    html += '<tr class="linhaTable">';
+                    html += '<tr id="trBg" class="linhaTable" onclick="bgTr()">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.xprod + '</td>';
                     html += '<td>' + qdtInt +'</td>'
@@ -164,14 +166,16 @@ function mostrar() {
                     html += '<td>' +pIpiItem+ '</td>';
                     html += '<td>' + percentFCP + '</td>';
                     html += '<td>' + valueFCP + '</td>';
-                    html += '<td>' + item.vICMSDeson+'</td>';
+                    html += '<td>' +'R$ '+item.vICMSDeson+'</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
                 });
             }
-        })
+        }) 
 }
+
+
 
 // FUNCTION PARA LIMPAR A TELA E VOLTAR PARA NOVA CONSULTA
 
@@ -217,10 +221,10 @@ const c = (elem) => {
 }
 
 function abrirMenu() {
-    if (c('linksUteis').style.width == '400px') {
+    if (c('linksUteis').style.width == '300px') {
         c('linksUteis').style.width = '0px';
     } else {
-        c('linksUteis').style.width = '400px';
+        c('linksUteis').style.width = '300px';
     }
 };
 
