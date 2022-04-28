@@ -37,6 +37,41 @@ function mostrar() {
                 c('btnExport').style.display = 'inline-block';
 
                 let cnpj = xml.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")
+            
+
+                if( xml.vCOFINS === '0'){
+                        xml.vCOFINS = '0.00'
+                }
+                if(xml.vPIS == '0'){
+                    xml.vPIS = '0.00';
+                }
+                if(xml.vBc == '0'){
+                    xml.vBc = '0.00';
+                }
+                if(xml.vIcms == '0'){
+                    xml.vIcms = '0.00';
+                }
+                if(xml.vBCST == '0'){
+                    xml.vBCST = '0.00';
+                }
+                if (xml.vST == '0'){
+                    xml.vST = '0.00';
+                }
+                if(xml.vIPI == '0'){
+                    xml.vIPI = '0.00';
+                }
+                if(xml.vOutro == '0'){
+                    xml.vOutro = '0.00';
+                }
+                if(xml.vDesc == '0'){
+                    xml.vDesc = '0.00';
+                }
+                if(xml.vFrete == '0'){
+                    xml.vFrete = '0.00';
+                }
+                if(xml.vFCP == '0'){
+                    xml.vFCP = '0.00';
+                }
                
                 c('chave').innerHTML = 'Chave de acesso:'+' '+'<span class="bgLineCabecalho">'+xml.chNFe+'</span>'
                 c('cnpj').innerHTML = 'CNPJ/CPF:'+' '+'<span class="bgLineCabecalho">'+cnpj+'</span>'
@@ -61,7 +96,7 @@ function mostrar() {
                 document.getElementById('footer').style.position = 'fixed';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">Und</th><th scope="col">R$Total</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">pICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">pICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COF<br>Venda</th><th scope="col">PIS|COF<br>Compra</th><th scope="col">R$IPI</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS</br>Deson</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">Und</th><th scope="col">R$Total</th><th scope="col">R$ Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">pICMS</th><th scope="col">bcICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">pICMSST</th><th scope="col">bcICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COF<br>Venda</th><th scope="col">PIS|COF<br>Compra</th><th scope="col">R$IPI</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">ICMS</br>Deson</th><th scope="col">Outras<br>Despesas</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -71,15 +106,23 @@ function mostrar() {
 
                     if (item.cstPis == "01") {
                         pisC = "50"
-                    } else if (item.cstPis == "06") {
+                    } 
+                    if (item.cstPis == "06") {
                         pisC = "73"
-                    } else if (item.cstPis == "04") {
+                    } 
+                    if (item.cstPis == "04") {
                         pisC = "70"
-                    } else if (item.cstPis == "08"){
+                    } 
+                    if (item.cstPis == "08"){
                         pisC = "***"
-                    } else if (item.cstPis == "02"){
+                    } 
+                    if (item.cstPis == "02"){
                         pisC = "***"
-                    } else if (item.cstPis == "99"){
+                    } 
+                    if (item.cstPis == "07"){
+                        pisC = "***"
+                    } 
+                    if (item.cstPis == "99"){
                         pisC = "***"
                     }
 
@@ -134,7 +177,8 @@ function mostrar() {
 
                     if (item.vICMSDeson === null){
                         item.vICMSDeson = '0.00'
-                     }else if(item.vICMSDeson == '0.0000'){
+                     }
+                     if(item.vICMSDeson == '0.0000'){
                         item.vICMSDeson = '0.00'
                      }
 
@@ -143,8 +187,18 @@ function mostrar() {
 
                     let vIcmsSt = item.vICMSST
                     vIcmsStFloat = parseFloat(vIcmsSt)
+
+                    let bcItem = item.vBC
+                    bcItemFloat = parseFloat(bcItem)
                     
-                    html += '<tr id="trBg" class="linhaTable" onclick="bgTr()">';
+                    let bcItemSt = item.vBCST
+                    bcItemStFloat = parseFloat(bcItemSt)
+
+                    if(item.vOutro === null){
+                        item.vOutro = '0.00'
+                    }
+
+                    html += '<tr id="trBg" class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.xprod + '</td>';
                     html += '<td>' + qdtInt +'</td>'
@@ -156,9 +210,11 @@ function mostrar() {
                     html += '<td>' + item.cfop + '</td>';
                     html += '<td>' + item.cstCson + '</td>';
                     html += '<td>' + bcIcmsInt + ' %' + '</td>';
+                    html += '<td>' + bcItemFloat.toFixed(2) + '</td>';
                     html += '<td>' + vIcmsFloat.toFixed(2) + '</td>';
                     html += '<td>' + redIcms + '%' + '</td>';
                     html += '<td>' + icmsStFloat.toFixed(0) + '%' +'</td>';
+                    html += '<td>' + bcItemStFloat.toFixed(2) + '</td>';
                     html += '<td>' +vIcmsStFloat.toFixed(2) +'</td>';
                     html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
@@ -167,6 +223,7 @@ function mostrar() {
                     html += '<td>' + percentFCP + '</td>';
                     html += '<td>' + valueFCP + '</td>';
                     html += '<td>' +'R$ '+item.vICMSDeson+'</td>';
+                    html += '<td>' +'R$ '+item.vOutro+'</td>';
                     html += '</tr>';
 
                     c('tabela').innerHTML = html;
@@ -223,7 +280,7 @@ const c = (elem) => {
 function abrirMenu() {
     if (c('linksUteis').style.width == '300px') {
         c('linksUteis').style.width = '0px';
-    } else {
+    }else{
         c('linksUteis').style.width = '300px';
     }
 };
@@ -259,7 +316,7 @@ function subirTela() {
 function ocultarBotao() {
     if (window.scrollY > 300) {
         document.querySelector('.btnToTop').style.display = 'block';
-    } else {
+    }else{
         document.querySelector('.btnToTop').style.display = 'none';
     }
 };
