@@ -138,9 +138,8 @@ function mostrar() {
                     let ipiFloat = parseFloat(ipi)
                     
                     let pIpiItem = item.pIpi
-                    if(pIpiItem === '0.0000'){
-                        pIpiItem = '0.00'
-                    }
+                    pIpiItemFloat = parseFloat(pIpiItem)
+                    
 
                     let qdt = item.quantidade
                     let qdtInt = parseInt(qdt).toFixed(0)
@@ -219,7 +218,7 @@ function mostrar() {
                     html += '<td>' + item.cstPis +' | '+ item.cstCofins +'</td>';
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
                     html += '<td>' +ipiFloat.toFixed(2)+ '</td>';
-                    html += '<td>' +pIpiItem+ '</td>';
+                    html += '<td>' +pIpiItemFloat.toFixed(2)+ '</td>';
                     html += '<td>' + percentFCP + '</td>';
                     html += '<td>' + valueFCP + '</td>';
                     html += '<td>' +'R$ '+item.vICMSDeson+'</td>';
