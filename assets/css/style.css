@@ -536,7 +536,7 @@ tbody, td, tfoot, th, thead tr {
     border-color: black !important;
 }
 .table>:not(caption)>*>*{
-    padding: 0.2rem 0.3rem;
+    padding: 0.2rem 0.2rem;
 }
 
 @keyframes modal{
