@@ -131,7 +131,7 @@ main{
 }
 #tableItems{
     display: none;
-    padding: 20px;
+    padding: 10px 3px ;
 }
 tr th{
     font-size: 15px;
@@ -152,8 +152,9 @@ tr th{
 .cabecalho{
     display: none;
     font-weight: 700;
-    padding: 20px;
-}.cabecalhoContainer{
+    padding: 10px 3px 0 3px;
+}
+.cabecalhoContainer{
     display: flex;
 }
 .cabecalhoItens{
@@ -345,7 +346,7 @@ input[type="file"]{
     height: 20px;
     background-color: var(--color-primary);
     display: block;
-    padding: 2px 0 0 0;
+    padding: 3px 0 0 0;
     position: absolute;
     bottom: 0;
     right: 0;
