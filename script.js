@@ -101,7 +101,7 @@ function mostrar() {
                 document.getElementById('loading').style.display = 'none';
 
                 const xmlItems = xml['xmlItem'];
-                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">Und</th><th scope="col">R$Total</th><th scope="col">R$Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">pICMS</th><th scope="col">bcICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">pICMSST</th><th scope="col">bcICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COF<br>Venda</th><th scope="col">PIS|COF<br>Compra</th><th scope="col">R$IPI</th><th scope="col">%IPI</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">vICMS</br>Deson</th><th scope="col">Outras<br>Despesas</th></tr></thead>';
+                let html = '<thead class="thead-light"><tr class="linhaTable"><th scope="col">Item</th><th scope="col">Descricao</th><th scope="col">Qtd</th><th scope="col">Und</th><th scope="col">R$Total</th><th scope="col">R$Desc</th><th scope="col">NCM</th><th scope="col">CEST</th><th scope="col">CFOP</th><th scope="col">CST</th><th scope="col">pICMS</th><th scope="col">bcICMS</th><th scope="col">vICMS</th><th scope="col">rICMS</th><th scope="col">pICMSST</th><th scope="col">bcICMSST</th><th scope="col">vICMSST</th><th scope="col">PIS|COF<br>Venda</th><th scope="col">PIS|COF<br>Compra</th><th scope="col">R$IPI</th><th scope="col">%IPI</th><th scope="col">pMVA</th><th scope="col">%FCP</th><th scope="col">R$FCP</th><th scope="col">vICMS</br>Deson</th><th scope="col">Outras<br>Despesas</th></tr></thead>';
 
                 xmlItems.map(function (item, index) {
 
@@ -156,10 +156,15 @@ function mostrar() {
                     let redIcms = item.pRedBC
                     redIcms = parseFloat(redIcms)
 
-                    let percentFCP = item.pFCP
-                        if(percentFCP === null || percentFCP == '0.0000'){
-                            percentFCP = '0.00'
-                        }
+                    let pFcp = item.pFCP;
+                    if(pFcp === null){
+                        pFcp = '0.00'
+                    }else if(pFcp === '2.0000'){
+                        pFcp = '2.00'
+                    }else if(pFcp === '0.0000'){
+                        pFcp = '0.00'
+                    }
+                
 
                     let valueFCP = item.vFCP
                         if(valueFCP === null || valueFCP == '0.0000'){
@@ -202,6 +207,10 @@ function mostrar() {
                         item.vOutro = '0.00'
                     }
 
+                    let pMva = item.pMVAST;
+                    pMvaToFloar = parseFloat(pMva);
+
+
                     html += '<tr id="trBg" class="linhaTable">';
                     html += '<td>' + item.nitem + '</td>';
                     html += '<td>' + item.xprod + '</td>';
@@ -224,7 +233,8 @@ function mostrar() {
                     html += '<td>' + pisC +' | '+ pisC +'</td>';
                     html += '<td>' +ipiFloat.toFixed(2)+ '</td>';
                     html += '<td>' +pIpiItemFloat.toFixed(2)+ '</td>';
-                    html += '<td>' + percentFCP + '</td>';
+                    html += '<td>' +pMvaToFloar.toFixed(2)+ '</td>';
+                    html += '<td>' + pFcp + '</td>';
                     html += '<td>' + valueFCP + '</td>';
                     html += '<td>' +item.vICMSDeson+'</td>';
                     html += '<td>' +'R$ '+item.vOutro+'</td>';
