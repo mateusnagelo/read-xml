@@ -57,6 +57,6 @@ Este projeto, até o momento, é uma aplicação privada, cujo back-end está ro
 
 ## 🎁 Expressões de gratidão
 
-Fico muito grato por ter concluío este projeto, pois foi o primeiro trabalho real para um cliente real.
+Fico muito grato por ter concluído este projeto, pois foi o primeiro trabalho real para um cliente real.
 No inicio eu estava muito nervoso quanto a isso, mas no final deu tudo certo, graças à Deus.
 💻🚀😊😊
