@@ -53,7 +53,7 @@ Todo controle de versão foi realizado dentro do repositório do GitHub.
 
 ## 📄 Licença
 
-Este projeto até o momento é uma aplicação privada, cujo back-end está rodando apenas na máquina do cliente que o solicitou. Como disse acima, caso queira testar na integra, me solicite via email.
+Este projeto, até o momento, é uma aplicação privada, cujo back-end está rodando apenas na máquina do cliente que o solicitou. Como disse acima, caso queira testar na integra, me solicite via email.
 
 ## 🎁 Expressões de gratidão
 
