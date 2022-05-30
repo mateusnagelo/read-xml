@@ -5,7 +5,7 @@ Esta aplicação foi desenvolvida para extrair dados fiscais do XML de uma NFe m
 
 ## 🚀 Começando
 
-Para rodar o projeto, que está no hospedato em:( https://extrator-xml.netlify.app/ ), você precisa que o back-end esteja rodando localmente em sua máquina e de um acesso que foi inserido estaticamente no front da aplicação, sem nenhuma validação externa. Sendo assim, você só poderá acessar para visualizar.
+Para rodar o projeto, que está no hospedado em:( https://extrator-xml.netlify.app/ ), você precisa que o back-end esteja rodando localmente em sua máquina e de um acesso que foi inserido estaticamente no front da aplicação, sem nenhuma validação externa. Sendo assim, você só poderá acessar para visualizar.
 
 ### 📋 Pré-requisitos
 
